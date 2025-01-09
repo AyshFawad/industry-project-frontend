@@ -1,36 +1,35 @@
 @font-face {
-    font-family: "Newsreader";
-    src: url("../../assets/fonts/Newsreader-Regular.woff2") format("woff2"),
-      url("../../assets/fonts/Newsreader-Regular.woff") format("woff");
+    font-family: "Montserrat";
+    src: url("../../assets/fonts/Montserrat-Regular.woff") format("woff");
     font-weight: 400;
 }
   
 @font-face {
-    font-family: "Newsreader";
-    src: url("../../assets/fonts/Newsreader-Light.woff2") format("woff2"),
-      url("../../assets/fonts/Newsreader-Light.woff") format("woff");
-    font-weight: 300;
-}
-  
-@font-face {
-    font-family: "Newsreader";
-    src: url("../../assets/fonts/Newsreader-LightItalic.woff2") format("woff2"),
-      url("../../assets/fonts/Newsreader-LightItalic.woff") format("woff");
-    font-weight: 300;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: "Outfit";
-    src: url("../../assets/fonts/Outfit-Light.woff2") format("woff2"),
-      url("../../assets/fonts/Outfit-Light.woff") format("woff");
-    font-weight: 300;
-}
-
-@font-face {
-    font-family: "Outfit";
-    src: url("../../assets/fonts/Outfit-Medium.woff2") format("woff2"),
-      url("../../assets/fonts/Outfit-Medium.woff") format("woff");
+    font-family: "Montserrat";
+    src: url("../../assets/fonts/Montserrat-Medium.woff") format("woff");
     font-weight: 500;
 }
   
+@font-face {
+    font-family: "Montserrat";
+    src: url("../../assets/fonts/Montserrat-SemiBold.woff") format("woff");
+    font-weight: 600;
+}
+
+h1 {
+  font-family: "Montserrat";
+  font-weight: 500;
+  font-size: 1.875rem;
+}
+
+h4 {
+  font-family: "Montserrat";
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+p {
+  font-family: "Montserrat";
+  font-weight: 400;
+  font-size: 1.125rem;
+}

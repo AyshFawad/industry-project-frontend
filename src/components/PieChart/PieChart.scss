@@ -1,0 +1,44 @@
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.chart {
+  margin: 0 auto;
+  text-align: center;
+
+  &__container {
+    padding: 1rem 0;
+    padding-left: 3rem;
+    margin: 0 auto;
+    width: 75%;
+    
+  }
+
+  &__legend {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  &__color {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: red;
+  }
+
+  &__label {
+    font-family: "Montserrat";
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: $primary-textcolor;
+  }
+}

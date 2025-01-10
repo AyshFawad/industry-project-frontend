@@ -17,9 +17,14 @@
     background-color: $primary-accentcolor;
     padding: 0 2rem;
     margin-top: 3rem;
-    height: 5rem;
+    height: 25vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
+  }
+
+  &__recommendation {
+    color: white;
   }
 
   &__message {

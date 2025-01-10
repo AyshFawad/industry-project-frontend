@@ -24,6 +24,7 @@ function ResultsPage() {
         <PieChart data={data} />
       </div>
       <div className="results__insights">
+        <h1 className="results__recommendation">Recommendations</h1>
         <p className="results__message">
           {score >= 75
             ? "Excellent! You're financially healthy."

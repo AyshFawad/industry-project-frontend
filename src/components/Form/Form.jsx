@@ -3,7 +3,7 @@ import {useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import './Form.scss'
 
-function Form () {
+function Form ({setData}) {
     const navigate = useNavigate()
     const [formData, setFormData] = useState({
         monthlyIncome: "",
@@ -26,7 +26,7 @@ function Form () {
 
         const createCustomerData = async () => {
           try {
-              await axios.post(
+              const response = await axios.post(
               "http://localhost:8080/financial/calculate",
               formData)
               console.log(formData);
@@ -39,7 +39,8 @@ function Form () {
               emergencyFund: "",
               
           });
-        
+          setData(response.data)
+
           } catch (error) {
             console.error("Request failed:", error.response?.data || error.message);
             setEmptyError(
@@ -70,10 +71,8 @@ function Form () {
             }
                               
             setIsFormValid(true);
-            await createCustomerData();
-            
+            const customerData = await createCustomerData();
             navigate('/results');
-            
         };
 
         

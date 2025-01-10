@@ -1,5 +1,9 @@
+import Form from "../../components/Form/Form";
+
 function FormPage () {
-    return (<></>)
+    return (<>
+    <Form />
+    </>)
 }
 
 export default FormPage;

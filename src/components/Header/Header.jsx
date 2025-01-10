@@ -6,10 +6,10 @@ import Person from '../../assets/logo/person.svg'
 function Header () {
     return(
         <>
-        <header>
+        <header className='header'>
         <img src ={Scotiabank}/>
         <img src ={Account} />
-        <img src ={Person} />
+        <img src ={Person} className='person'/>
         </header>
         </>)
 }

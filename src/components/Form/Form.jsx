@@ -55,11 +55,11 @@ function Form () {
             
 
     return(
-        <>
+        <div className ="form-section">
        
 
-        <p>Calculate your <span style={{ color: "#EB0F19" }}>Financial Wellness Score</span> Today!</p>
-        <p>Fill out the form below to get started!</p>
+        <h1>Calculate your <span style={{ color: "#EB0F19" }}>Financial Wellness Score</span> Today!</h1>
+        <p className='heading'>Fill out the form below to get started!</p>
         
         <form className="form" onSubmit={handleSubmit}>
             <div>
@@ -204,7 +204,7 @@ function Form () {
             </div>
             <button className='form__button'>Submit</button>
         </form>
-        </>
+        </div>
     )
 }
 

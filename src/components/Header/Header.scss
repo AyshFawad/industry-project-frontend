@@ -1,3 +1,16 @@
 @use '../../styles/partials/fonts' as *;
 @use '../../styles/partials/mixins' as *;
 @use '../../styles/partials/variables' as *;
+
+.header{
+    display :flex;
+    justify-content: space-between;
+    position: relative;
+    padding: 1rem;
+}
+
+.person{
+    position: absolute;
+    right:1.9rem;
+    top:1.8rem;
+}

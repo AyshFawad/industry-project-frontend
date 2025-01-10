@@ -1,0 +1,7 @@
+@use '../src/styles/partials/variables' as *;
+
+body {
+    box-sizing: border-box;
+    color: $primary-textcolor;
+    margin: 0;
+}

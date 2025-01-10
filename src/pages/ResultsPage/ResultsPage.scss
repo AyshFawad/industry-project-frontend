@@ -1,0 +1,13 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.results {
+    padding: 0 2rem;
+    &__heading {
+        color: $primary-textcolor;
+
+        & span {
+            color: $primary-accentcolor;
+        }
+    }
+}

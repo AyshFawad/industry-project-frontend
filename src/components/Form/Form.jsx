@@ -1,4 +1,4 @@
-
+import axios from "axios";
 import {useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import './Form.scss'
@@ -6,13 +6,12 @@ import './Form.scss'
 function Form () {
     const navigate = useNavigate()
     const [formData, setFormData] = useState({
-        monthly_income: "",
-        monthly_savings: "",
-        monthly_expenses: "",
-        total_debt: "",
+        monthlyIncome: "",
+        monthlySavings: "",
+        monthlyExpenses: "",
+        totalDebt: "",
         investments: "",
-        emergency_fund: "",
-        assets: "",
+        emergencyFund: "",
         })
     const [emptyError, setEmptyError] = useState("");
     const [isFormValid, setIsFormValid] = useState(true)
@@ -25,19 +24,43 @@ function Form () {
             }));
         };
 
+        const createCustomerData = async () => {
+          try {
+              await axios.post(
+              "http://localhost:8080/financial/calculate",
+              formData)
+              console.log(formData);
+            setFormData({
+              monthlyIncome: "",
+              monthlySavings:"",
+              monthlyExpenses: "",
+              totalDebt: "",
+              investments: "",
+              emergencyFund: "",
+              
+          });
+        
+          } catch (error) {
+            console.error("Request failed:", error.response?.data || error.message);
+            setEmptyError(
+              error.response?.data?.message || "Failed to create Customer data. Please try again."
+            );
+          }
+        }
+
         const handleSubmit = async (e) => {
             e.preventDefault();
             setEmptyError("");
             
           
             if (
-              !formData.monthly_income ||
-              !formData.monthly_savings ||
-              !formData.monthly_expenses ||
-              !formData.total_debt ||
+              !formData.monthlyIncome ||
+              !formData.monthlySavings ||
+              !formData.monthlyExpenses ||
+              !formData.totalDebt ||
               !formData.investments ||
-              !formData.emergency_fund ||
-              !formData.assets 
+              !formData.emergencyFund 
+              
              ) {
               setIsFormValid(false);
               setEmptyError(
@@ -47,9 +70,13 @@ function Form () {
             }
                               
             setIsFormValid(true);
+            await createCustomerData();
+            
             navigate('/results');
             
         };
+
+        
 
        
             
@@ -67,18 +94,18 @@ function Form () {
                     Monthly income
                     <input
                   className={`form__details ${
-                    !isFormValid && !formData.monthly_income
+                    !isFormValid && !formData.monthlyIncome
                       ? "form__details--errors"
                       : ""
                   }`} 
-                    name="monthly_income"
+                    name="monthlyIncome"
                     type="number"
                     placeholder="$"
-                    value={formData.monthly_income}
+                    value={formData.monthlyIncome}
                     onChange={handleChange}
                     />
             </label>
-            {!formData.monthly_income && (
+            {!formData.monthlyIncome && (
                 <p className="errors">{emptyError}</p>
               )}
             </div>
@@ -87,18 +114,18 @@ function Form () {
                     Monthly savings
                     <input
                   className={`form__details ${
-                    !isFormValid && !formData.monthly_savings
+                    !isFormValid && !formData.monthlySavings
                       ? "form__details--errors"
                       : ""
                   }`}
-                    name="monthly_savings"
+                    name="monthlySavings"
                     type="number"
                     placeholder="$"
-                    value={formData.monthly_savings}
+                    value={formData.monthlySavings}
                     onChange={handleChange}
                     />
             </label>
-            {!formData.monthly_savings && (
+            {!formData.monthlySavings && (
                 <p className="errors">{emptyError}</p>
               )}
             </div>
@@ -107,18 +134,18 @@ function Form () {
                     Monthly expenses
                     <input
                   className={`form__details ${
-                    !isFormValid && !formData.monthly_expenses
+                    !isFormValid && !formData.monthlyExpenses
                       ? "form__details--errors"
                       : ""
                   }`}
-                    name="monthly_expenses"
+                    name="monthlyExpenses"
                     type="number"
                     placeholder="$"
-                    value={formData.monthly_expenses}
+                    value={formData.monthlyExpenses}
                     onChange={handleChange}
                     />
             </label>
-            {!formData.monthly_expenses && (
+            {!formData.monthlyExpenses && (
                 <p className="errors">{emptyError}</p>
               )}
             </div>
@@ -127,18 +154,18 @@ function Form () {
                     Total debt
                     <input
                   className={`form__details ${
-                    !isFormValid && !formData.total_debt
+                    !isFormValid && !formData.totalDebt
                       ? "form__details--errors"
                       : ""
                   }`}
-                    name="total_debt"
+                    name="totalDebt"
                     type="number"
                     placeholder="$"
-                    value={formData.total_debt}
+                    value={formData.totalDebt}
                     onChange={handleChange}
                     />
             </label>
-            {!formData.total_debt && (
+            {!formData.totalDebt && (
                 <p className="errors">{emptyError}</p>
               )}
             </div>
@@ -167,41 +194,22 @@ function Form () {
                     Emergency fund amount
                     <input
                   className={`form__details ${
-                    !isFormValid && !formData.emergency_fund
+                    !isFormValid && !formData.emergencyFund
                       ? "form__details--errors"
                       : ""
                   }`}
-                    name="emergency_fund"
+                    name="emergencyFund"
                     type="number"
                     placeholder="$"
-                    value={formData.emergency_fund}
+                    value={formData.emergencyFund}
                     onChange={handleChange}
                     />
             </label>
-            {!formData.emergency_fund && (
+            {!formData.emergencyFund && (
                 <p className="errors">{emptyError}</p>
               )}
             </div>
-            <div>
-            <label className="form__label">
-                    Any addition assets
-                    <input
-                  className={`form__details ${
-                    !isFormValid && !formData.assets
-                      ? "form__details--errors"
-                      : ""
-                  }`}
-                    name="assets"
-                    type="number"
-                    placeholder="$"
-                    value={formData.assets}
-                    onChange={handleChange}
-                    />
-            </label>
-            {!formData.assets && (
-                <p className="errors">{emptyError}</p>
-              )}
-            </div>
+                   
             <button className='form__button'>Submit</button>
         </form>
         </div>

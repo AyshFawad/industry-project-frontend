@@ -1,36 +1,46 @@
 import PieChart from "../../components/PieChart/PieChart";
 import ScoreMeter from "../../components/ScoreMeter/ScoreMeter";
+import axios from "axios";
+import { useState, useEffect } from "react";
 import "./ResultsPage.scss";
 
-function ResultsPage() {
-  const score = 85;
-  const data = {
-    Savings: 30,
-    Spending: 25,
-    Investments: 20,
-    DebtManagement: 15,
-    RetirementPlanning: 10,
-  };
+function ResultsPage({ id }) {
+  const [calculatedData, setCalculatedData] = useState([]);
+  console.log(id)  
+  useEffect(() => {
+    const url = `http://localhost:8080/financial/${id}`;
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(url);
+        console.log(response.data)
+        setCalculatedData(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  },[]);
+
+  if (calculatedData.length === 0) {
+    return <>Loading...</>;
+  }
+
   return (
     <section className="results">
       <div className="results__charts">
         <h1 className="results__heading">
           Your <span>Results</span> are in ...
         </h1>
-        <ScoreMeter score={score} />
+        <ScoreMeter score={calculatedData.totalScore} />
         <p className="results__text">
           Here is an in-depth breakdown of your score:
         </p>
-        <PieChart data={data} />
+        <PieChart data={calculatedData} />
       </div>
       <div className="results__insights">
         <h1 className="results__recommendation">Recommendations</h1>
         <p className="results__message">
-          {score >= 75
-            ? "Excellent! You're financially healthy."
-            : score >= 50
-            ? "Good progress, but there’s room for improvement."
-            : "Consider improving your financial habits for better health."}
+          {calculatedData.recommendations[0].message}
         </p>
       </div>
     </section>

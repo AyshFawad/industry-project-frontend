@@ -1,8 +1,8 @@
 import Form from "../../components/Form/Form";
 
-function FormPage () {
+function FormPage ({setData}) {
     return (<>
-    <Form />
+    <Form setData={setData}/>
     </>)
 }
 

@@ -3,6 +3,7 @@
 
 .form-section{
     padding: 2rem;
+    padding-top: 0;
 }
 .heading {
     color: $primary-textcolor;
@@ -27,7 +28,7 @@
     }
     &__details {
        border: 1px solid $primary-textcolor;
-       width: 100%;
+       width: 95%;
        height: 23px;
        border-radius: 0.9375rem;
        padding:0.5rem;
@@ -49,8 +50,9 @@
         width:100%;
         display: flex;
         border: 1px solid $primary-accentcolor;
-        border-radius: 20px ;
+        border-radius: 15px ;
         padding:0.8rem;
+        margin-top: 1rem;
         font-weight: 300;    
         font-family: "Montserrat";
         font-size: 15px;
